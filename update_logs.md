@@ -1,5 +1,9 @@
 # Update Logs
-Currently, the latest version is 1.1, which was updated on April 5, 2021.
+Currently, the latest version is 1.2, which was updated on April 13, 2021.
+
+## 1.2 (Apr. 13, 2021)
+- Modified the JSON object structure for storing offline messages.
+- Fixed some problems.
 
 ## 1.1 (Apr. 5, 2021)
 - Allow the configuration of this program to be settable from the "mscrserver_config.json" file in the current running directory.

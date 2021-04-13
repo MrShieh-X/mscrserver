@@ -70,6 +70,10 @@ public class MSCRServer {
                         JSONObject jsonObject = JSONObject.parseObject(URLDecoder.decode((String) message));
                         String toUserEncrypted = jsonObject.getString("t");
                         String content = jsonObject.getString("c");
+                        Integer type = jsonObject.getInteger("y");
+                        if(type==null){
+                            type=0;
+                        }
                         String currentUserEOAEncrypted = jsonObject.getString("f");
                         List<String>var=new ArrayList<>(map.values());
 
@@ -88,7 +92,11 @@ public class MSCRServer {
 
                         if(session1!=null){
                             //online
-                            session1.write(URLEncoder.encode("{\"f\":\""+currentUserEOAEncrypted+"\",\"c\":\""+content+"\"}","UTF-8"));
+                            JSONObject jsonObject1=new JSONObject();
+                            jsonObject1.put("f",currentUserEOAEncrypted);
+                            jsonObject1.put("c",content);
+                            jsonObject1.put("t",type);
+                            session1.write(URLEncoder.encode(/*"{\"f\":\""+currentUserEOAEncrypted+"\",\"c\":\""+content+"\"}"*/jsonObject1.toString(),"UTF-8"));
                         }else{
                             //offline
                             //String eoaEnc=eoasEncrypted.get(indexOf);
@@ -98,21 +106,44 @@ public class MSCRServer {
                             String by="account";
                             String messages=getString(Variables.getDatabaseTableName(),"messages",by,toUserEncrypted);
                             if(messages!=null&&messages.length()!=0){
-                                /*JSONArray head=JSONArray.parseArray(messages);
+                                JSONArray head;
+                                try {
+                                    head = JSONArray.parseArray(messages);
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                    head=new JSONArray();
+                                }
                                 boolean did=false;
                                 for(int i=0;i<head.size();i++){
                                     JSONObject thisAcc=head.getJSONObject(i);
-                                    String account=thisAcc.getString("account");
+                                    String account=null;
+                                    try {
+                                        account=thisAcc.getString("account");
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                    }
                                     if(account!=null&&account.length()!=0){
                                         if(account.equals(currentUserEOAEncrypted)){
                                             JSONArray messagesArray=thisAcc.getJSONArray("messages");
                                             if(messagesArray!=null){
-                                                messagesArray.add(content);
-                                                thisAcc.remove("messages");
+                                                JSONObject messageObj=new JSONObject();
+                                                messageObj.put("text",content);
+                                                messageObj.put("type",type);
+                                                messageObj.put("time",System.currentTimeMillis());
+                                                messagesArray.add(messageObj);
+                                                //thisAcc.remove("messages");
                                                 thisAcc.put("messages",messagesArray);
                                             }else{
                                                 JSONArray newMessages=new JSONArray();
-                                                newMessages.add(content);
+                                                //newMessages.add(content);
+
+                                                JSONObject messageObj=new JSONObject();
+                                                messageObj.put("text",content);
+                                                messageObj.put("type",type);
+                                                messageObj.put("time",System.currentTimeMillis());
+                                                newMessages.add(messageObj);
+
+
                                                 thisAcc.put("messages",newMessages);
                                             }
                                             head.remove(i);
@@ -128,15 +159,16 @@ public class MSCRServer {
                                     JSONObject thisAcc=new JSONObject();
                                     thisAcc.put("account",currentUserEOAEncrypted);
                                     JSONArray messagesArray=new JSONArray();
-                                    messagesArray.add(content);
+                                    JSONObject messageObj=new JSONObject();
+                                    messageObj.put("text",content);
+                                    messageObj.put("type",type);
+                                    messageObj.put("time",System.currentTimeMillis());
+                                    messagesArray.add(messageObj);
                                     thisAcc.put("messages",messagesArray);
                                     head.add(thisAcc);
-                                }*/
-
-
-
+                                }
                                 //NOT EMPTY, USE OLD
-                                JSONObject jsonObject2 = JSON.parseObject(messages);
+                                /*JSONObject jsonObject2 = JSON.parseObject(messages);
                                 JSONArray array=jsonObject2.getJSONArray(currentUserEOAEncrypted);
                                 if(array!=null){
                                     //ARRAY IS EXISTS, USE OLD
@@ -148,21 +180,25 @@ public class MSCRServer {
                                     JSONArray array1=new JSONArray();
                                     array1.add(content);
                                     jsonObject2.put(currentUserEOAEncrypted,array1);
-                                }
-                                setString(Variables.getDatabaseTableName(),"messages",jsonObject2.toString(),by,toUserEncrypted);
+                                }*/
+                                setString(Variables.getDatabaseTableName(),"messages",head.toString(),by,toUserEncrypted);
                             }else{
                                 /**new*/
-                                /*JSONArray head=new JSONArray();
+                                JSONArray head=new JSONArray();
                                 JSONObject thisAcc=new JSONObject();
-                                thisAcc.put("account",currentUserEOAEncrypted);
                                 JSONArray messagesArray=new JSONArray();
-                                messagesArray.add(content);
+                                JSONObject messageObj=new JSONObject();
+                                messageObj.put("text",content);
+                                messageObj.put("type",type);
+                                messageObj.put("time",System.currentTimeMillis());
+                                messagesArray.add(messageObj);
                                 thisAcc.put("messages",messagesArray);
-                                head.add(thisAcc);*/
+                                thisAcc.put("account",currentUserEOAEncrypted);
+                                head.add(thisAcc);
 
 
                                 //EMPTY, NEW A
-                                setString(Variables.getDatabaseTableName(),"messages","{\""+currentUserEOAEncrypted+"\":[\""+content+"\"]}"/*head.toString()*/, by,toUserEncrypted);
+                                setString(Variables.getDatabaseTableName(),"messages",/*"{\""+currentUserEOAEncrypted+"\":[\""+content+"\"]}"*/head.toString(), by,toUserEncrypted);
                             }
                         }
                     }

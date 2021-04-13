@@ -11,10 +11,11 @@ Anyone can take advices of this program to us.
 
 ## Version
 The latest version: <br/>
-<b>1.1 (Apr. 05, 2021)</b><br/>
+<b>1.2 (Apr. 13, 2021) (Corresponding to client 1.2)</b><br/>
 Historical version: <br/>
-<b>1.1 (Apr. 05, 2021)</b><br/>
-<b>1.0 (Jan. 31, 2021) (First version)</b><br/>
+<b>1.2 (Apr. 13, 2021) (Corresponding to client 1.2)</b><br/>
+<b>1.1 (Apr. 05, 2021) (Corresponding to client 1.1)</b><br/>
+<b>1.0 (Jan. 31, 2021) (First version) (Corresponding to client 1.0)</b><br/>
 
 ## The software configuration required for this application is:
 * Java
@@ -38,7 +39,7 @@ First put the program in a directory, and then create a new file named "mscrserv
 
 ![Configuration File Content](https://gitee.com/MrShiehX/Repository/raw/master/33.png "Configuration File Content")</br>
 
-After saving, you can use the `java -jar MSCRServer_1.1.jar` command to start.
+After saving, you can use the `java -jar MSCRServer_1.2.jar` command to start.
 
 ## About Author
 MrShiehX<br/>

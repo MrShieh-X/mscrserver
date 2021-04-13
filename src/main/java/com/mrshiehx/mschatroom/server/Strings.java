@@ -38,7 +38,7 @@ public class Strings {
                 message_session_closed="\u4f1a\u8bdd\u5173\u95ed\uff1a%1$s\uff08%2$s\uff09";
                 message_session_opened="\u4f1a\u8bdd\u6253\u5f00\uff1a%1$s\uff08%2$s\uff09";
             }else{
-                app_title="com.mrshiehx.mschatroom.server.MSCRServer";
+                app_title="MSCRServer";
                 message_connected_message="Connected";
                 message_connect_closed="Connection is closed";
                 message_have_a_error="An error occurred: %s";
