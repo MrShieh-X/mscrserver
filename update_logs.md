@@ -1,5 +1,9 @@
 # Update Logs
-Currently, the latest version is 1.2, which was updated on April 13, 2021.
+Currently, the latest version is 1.3, which was updated on May 10, 2021.
+
+## 1.3 (May 10, 2021)
+- Fixed the problem of multiple connections.
+- Each log will display the date and time.
 
 ## 1.2 (Apr. 13, 2021)
 - Modified the JSON object structure for storing offline messages.

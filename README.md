@@ -11,11 +11,12 @@ Anyone can take advices of this program to us.
 
 ## Version
 The latest version: <br/>
-<b>1.2 (Apr. 13, 2021) (Corresponding to client 1.2)</b><br/>
+<b>1.3 (May 10, 2021) (Corresponding to client 1.3)</b><br/>
 Historical version: <br/>
+<b>1.3 (May 10, 2021) (Corresponding to client 1.3)</b><br/>
 <b>1.2 (Apr. 13, 2021) (Corresponding to client 1.2)</b><br/>
-<b>1.1 (Apr. 05, 2021) (Corresponding to client 1.1)</b><br/>
-<b>1.0 (Jan. 31, 2021) (First version) (Corresponding to client 1.0)</b><br/>
+<b>1.1 (Apr. 05, 2021) (Corresponding to client 1.1-1.1.1)</b><br/>
+<b>1.0 (Jan. 31, 2021) (Corresponding to client 1.0)</b><br/>
 
 ## The software configuration required for this application is:
 * Java

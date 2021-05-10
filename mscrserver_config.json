@@ -1,9 +1,0 @@
-{
-  "port": 6553,
-  "serverAddress": "192.168.101.157",
-  "databaseName": "mscr",
-  "databaseUserName": "root",
-  "databaseUserPassword": "wwwwwww",
-  "databaseTableName": "users",
-  "isPrint": true
-}
