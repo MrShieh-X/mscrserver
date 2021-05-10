@@ -40,7 +40,7 @@ First put the program in a directory, and then create a new file named "mscrserv
 
 ![Configuration File Content](https://gitee.com/MrShiehX/Repository/raw/master/33.png "Configuration File Content")</br>
 
-After saving, you can use the `java -jar MSCRServer_1.2.jar` command to start.
+After saving, you can use the `java -jar MSCRServer_1.3.jar` command to start.
 
 ## About Author
 MrShiehX<br/>

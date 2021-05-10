@@ -40,7 +40,7 @@ MrShiehX 拥有该程序的版权。<br/>
 
 ![配置文件内容](https://gitee.com/MrShiehX/Repository/raw/master/33.png "配置文件内容")</br>
 
-保存完成后，就可以使用`java -jar MSCRServer_1.2.jar`命令启动了。
+保存完成后，就可以使用`java -jar MSCRServer_1.3.jar`命令启动了。
 
 ## 关于作者
 MrShiehX<br/>
