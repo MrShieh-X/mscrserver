@@ -53,9 +53,9 @@ public class MSCRServer {
                         try {
                             String aoeE = "aoe=";
                             if (((String) message).startsWith(aoeE)) {
-                                if (Variables.getIsPrint()) {
-                                    System.out.println(getTimeString() + String.format(Strings.message_received, URLDecoder.decode((String) message, "utf-8")));
-                                }
+                                //if (Variables.getIsPrint()) {
+                                //    System.out.println(getTimeString() + String.format(Strings.message_received, URLDecoder.decode((String) message, "utf-8")));
+                                //}
                                 String c = ((String) message).substring(aoeE.length());
                                 if (!c.equals("aoe=" + "/") && c.contains("/")) {
                                     String[] strings = c.split("/");
@@ -107,7 +107,7 @@ public class MSCRServer {
                                                 }
 
 
-                                                if (session1 != null) {
+                                                if (session1 != null&&session.isConnected()) {
                                                     //online
                                                     JSONObject jsonObject1 = new JSONObject();
                                                     jsonObject1.put("from", currentUserEOAEncrypted);
